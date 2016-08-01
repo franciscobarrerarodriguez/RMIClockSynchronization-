@@ -1,4 +1,5 @@
 package test;
+
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -8,7 +9,7 @@ import logic.Server;
 public class MainServer {
 
 	public static void main(String[] args) {
-		
+
 		Server server = new Server(1450);
 		try {
 			server.runServer();

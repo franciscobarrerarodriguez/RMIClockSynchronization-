@@ -1,6 +1,9 @@
 .classpath
 .project
 .settings/
+.metadata/
+.recommenders/
 bin/
 .jpg
 .JPG
+egas

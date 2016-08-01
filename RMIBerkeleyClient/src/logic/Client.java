@@ -8,12 +8,14 @@ import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 
 import tools.AllConstants;
+import views.JFrameClient;
 
 public class Client implements Runnable {
 
 	private String ip;
 	private int port;
 	private String typeClient;
+	private JFrameClient jFrameClient;
 	private String averageTime;
 	private int numberOfClients;
 	private ArrayList<String> hours;
@@ -22,11 +24,12 @@ public class Client implements Runnable {
 
 	private IServerOperations iServerOperations;
 
-	public Client(String ip, int port, String typeClient)
+	public Client(String ip, int port, String typeClient, JFrameClient jFrameClient)
 			throws RemoteException, MalformedURLException, NotBoundException {
 		this.ip = ip;
 		this.port = port;
 		this.typeClient = typeClient;
+		this.jFrameClient = jFrameClient;
 		this.averageTime = "";
 		this.thread = new Thread(this);
 		this.flag = false;
@@ -67,10 +70,14 @@ public class Client implements Runnable {
 					this.flag = true;
 				}
 			}
-if(this.flag){
-	 System.out.println(this.averageTime);
-	 this.flag = false;
-}
+			if (this.flag) {
+				String avrg[] = this.averageTime.split(":");
+				this.jFrameClient.getjLabelHour().setText(avrg[0]);
+				this.jFrameClient.getjLabelMinute().setText(avrg[1]);
+				this.jFrameClient.getjLabelSecond().setText(avrg[2]);
+				this.jFrameClient.repaint();
+				this.flag = false;
+			}
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {

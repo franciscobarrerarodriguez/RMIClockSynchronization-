@@ -57,4 +57,27 @@ public class ServerOperations extends UnicastRemoteObject implements IServerOper
 		return this.averageTime;
 	}
 
+	public DateFormat getDateHourFormat() {
+		return dateHourFormat;
+	}
+
+	public void setDateHourFormat(DateFormat dateHourFormat) {
+		this.dateHourFormat = dateHourFormat;
+	}
+
+	public boolean isCalculate() {
+		return calculate;
+	}
+
+	public void setCalculate(boolean calculate) {
+		this.calculate = calculate;
+	}
+
+	public void setNumberOfClients(int numberOfClients) {
+		this.numberOfClients = numberOfClients;
+	}
+
+	public void setHours(ArrayList<String> hours) {
+		this.hours = hours;
+	}
 }
